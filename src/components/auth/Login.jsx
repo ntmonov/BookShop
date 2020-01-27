@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toastr from 'toastr'
 import { login, saveCookie } from '../../utils/auth'
 
 
@@ -23,8 +24,9 @@ const Login = ({ getUserName }) => {
             }
             saveCookie(userInfo);
             getUserName(userInfo.username);
+            toastr.success('Login Successfull')
         } catch (err) {
-            console.log(err);
+            toastr.error(err)
         }
     }
 
