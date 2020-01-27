@@ -5,7 +5,7 @@ import { setCookie, getCookieValue } from './cookiefunctions'
 function saveCookie (user) {
     setCookie('username', user.username)
     setCookie('authToken', user._kmd.authtoken)
-    setCookie('roleId', user.roleId)
+    setCookie('roleId', user._kmd.roles[0].roleId)
     setCookie('userId', user._id)
   }
   
@@ -22,7 +22,7 @@ function register ({ username, password, email, address }) {
   return post(`${BASE_URL}user/${APP_KEY}`, 'basic', data)
 }
 
-async function login ({ username, password }) {
+function login ({ username, password }) {
   const data = { username, password }
   return post(`${BASE_URL}user/${APP_KEY}/login`, 'basic', data)
 }
