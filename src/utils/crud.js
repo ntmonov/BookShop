@@ -20,7 +20,7 @@ function request (method) {
       body: Object.keys(data).length ? JSON.stringify(data) : undefined,
       ...options
     })
-    return response.json()
+    return response
   }
 }
 

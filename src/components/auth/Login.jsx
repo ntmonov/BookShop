@@ -18,7 +18,8 @@ const Login = ({ getUserName }) => {
         e.preventDefault();
         let userInfo;
         try {
-            userInfo = await login(user);
+            userInfo = await login(user).then(res => res.json());
+            console.log(userInfo)
             if (userInfo.error) {
                 throw new Error(userInfo.description);
             }

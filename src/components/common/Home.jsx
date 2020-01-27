@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
-        <div class="jumbotron">
-            <h1 class="display-4">Hello</h1>
-            <p class="lead">The best app about books</p>
-            <hr class="my-4" />
+        <div className="jumbotron">
+            <h1 className="display-4">Hello</h1>
+            <p className="lead">The best app about books</p>
+            <hr className="my-4" />
             <p>In order to see the books please login</p>
-            <p class="lead">
-                <Link class="btn btn-primary btn-lg" to="/login" role="button">Влез</Link>
+            <p className="lead">
+                <Link className="btn btn-primary btn-lg" to="/login" role="button">Влез</Link>
             </p>
         </div>
     )

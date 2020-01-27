@@ -1,7 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import toastr from 'toastr'
+import { deleteAllCookies } from '../../utils/cookiefunctions'
+import { isAuth, logout } from '../../utils/auth';
 
 const Header = ({username}) => {
+
+    const onLogoutClicked = async () => {
+        let logoutInfo
+        try {
+            logoutInfo = await logout();
+            console.log(logoutInfo)
+            if (logoutInfo.status !== 204) {
+                throw new Error('Logout failed')
+            }
+            deleteAllCookies();
+            toastr.success('Logout successfull');
+        } catch (err) {
+            toastr.error(err)
+        }
+        
+    }
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,9 +45,12 @@ const Header = ({username}) => {
                             <Link className="dropdown-item" to="/admin/orders">View orders</Link>
                         </div>
                     </li>
-                    <li>
+                    {isAuth() && (<li>
                         <span>Welcome {username}</span>
-                    </li>
+                    </li>)}
+                    {isAuth() && <li className="nav-item">
+                        <button className="btn btn-info m-2" onClick={onLogoutClicked}>Logout</button>
+                    </li>}
                 </ul>
             </div>
         </nav>
