@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className='container'>
-      <Header username={username}/>
+      <Header username={username} getUserName={getUserName}/>
       <Switch>
           <Route path="/" exact>
             <Home />

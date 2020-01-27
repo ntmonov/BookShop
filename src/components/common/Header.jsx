@@ -2,20 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import toastr from 'toastr'
 import { deleteAllCookies } from '../../utils/cookiefunctions'
-import { isAuth, logout } from '../../utils/auth';
+import { isAuth, isAdmin, logout } from '../../utils/auth';
 
-const Header = ({username}) => {
+const Header = ({username, getUserName}) => {
 
     const onLogoutClicked = async () => {
         let logoutInfo
         try {
             logoutInfo = await logout();
-            console.log(logoutInfo)
             if (logoutInfo.status !== 204) {
                 throw new Error('Logout failed')
             }
             deleteAllCookies();
             toastr.success('Logout successfull');
+            getUserName('')
+
         } catch (err) {
             toastr.error(err)
         }
@@ -36,7 +37,7 @@ const Header = ({username}) => {
                     <li className="nav-item">
                         <Link className="nav-link" to="/login">Login</Link>
                     </li>
-                    <li className="nav-item dropdown">
+                    {isAdmin() && <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Admin Panel
                         </a>
@@ -44,7 +45,7 @@ const Header = ({username}) => {
                             <Link className="dropdown-item" to="/admin/listBooks">List books</Link>
                             <Link className="dropdown-item" to="/admin/orders">View orders</Link>
                         </div>
-                    </li>
+                    </li>}
                     {isAuth() && (<li>
                         <span>Welcome {username}</span>
                     </li>)}
