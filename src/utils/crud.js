@@ -3,9 +3,15 @@ import { getCookieValue } from './cookiefunctions'
 
 function createCredentials (type) {
   const basicCredentials = 'Basic ' + window.btoa(APP_KEY + ':' + APP_SECRET)
+  const masterCredentials = 'Basic a2lkX0J5VExFVk9aVTowODlkNTExYzY1MWU0ZWE5YWE1YjMwM2Q5NTAxZWJlNw=='
   const kinveyCredentials = 'Kinvey ' + getCookieValue('authToken')
-  return (type === 'basic')
-    ? basicCredentials : kinveyCredentials
+  if (type === 'basic') {
+    return basicCredentials
+  } else if (type === 'master') {
+    return masterCredentials
+  } else {
+    return kinveyCredentials
+  }
 }
 
 function request (method) {

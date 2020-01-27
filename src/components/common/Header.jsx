@@ -37,6 +37,9 @@ const Header = ({username, getUserName}) => {
                     <li className="nav-item">
                         <Link className="nav-link" to="/login">Login</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/register">Register</Link>
+                    </li>
                     {isAdmin() && <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Admin Panel

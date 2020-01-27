@@ -5,6 +5,7 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Home from './components/common/Home';
 import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 
 function App() {
 
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login getUserName={getUserName}/>
+          </Route>
+          <Route path="/register">
+            <Register getUserName={getUserName}/>
           </Route>
         </Switch>
       <Footer />
