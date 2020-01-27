@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { login, saveCookie } from '../../utils/auth'
 
 
-const Login = () => {
+const Login = ({ getUserName }) => {
     const [user, setUser] = useState({ username: '', password: '' })
 
     const handleChange = (e) => {
@@ -22,7 +22,7 @@ const Login = () => {
                 throw new Error(userInfo.description);
             }
             saveCookie(userInfo);
-            console.log(userInfo);
+            getUserName(userInfo.username);
         } catch (err) {
             console.log(err);
         }

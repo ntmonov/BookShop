@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({username}) => {
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link className="navbar-brand" to="/">BookShop</Link>
@@ -24,6 +25,9 @@ const Header = () => {
                             <Link className="dropdown-item" to="/admin/listBooks">List books</Link>
                             <Link className="dropdown-item" to="/admin/orders">View orders</Link>
                         </div>
+                    </li>
+                    <li>
+                        <span>Welcome {username}</span>
                     </li>
                 </ul>
             </div>
